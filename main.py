@@ -3,10 +3,13 @@ from fastapi.responses import RedirectResponse
 from dotenv import load_dotenv
 
 from startup import DependencyContainer, configure_services, add_app_configuration
+from data import ensure_db_exists
 
 
 def create_app() -> FastAPI:
     load_dotenv()
+    ensure_db_exists()
+
     container = DependencyContainer()
     add_app_configuration(container)
     configure_services(container)
