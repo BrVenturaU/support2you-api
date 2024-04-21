@@ -1,11 +1,14 @@
 import os
 from dependency_injector import containers, providers
 
+from data.database import Database
+
 class DependencyContainer(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(modules=[])
     configuration = providers.Configuration()
 
     # Services
+    db = providers.Singleton(Database, connection=configuration.connection_string)
 
 def configure_services(container: DependencyContainer):
     pass # Configure implementations of Services
@@ -24,3 +27,4 @@ def add_app_configuration(container: DependencyContainer):
         pass # TODO: Add logguer
     # Environment and constant value configurations
     container.configuration.env.from_value(APP_ENVIRONMENT)
+    container.configuration.connection_string.from_env('APP_DB_CONNECTION')
