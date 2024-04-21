@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from startup import DependencyContainer, configure_services, add_app_configuration
 from data import ensure_db_exists
 
+from features.tickets import tickets_controller
+from features.messages import messages_controller
 
 def create_app() -> FastAPI:
     load_dotenv()
@@ -18,7 +20,8 @@ def create_app() -> FastAPI:
     app.container = container
 
     # Include routes here
-
+    app.include_router(tickets_controller.router)
+    app.include_router(messages_controller.router)
 
     return app
 
