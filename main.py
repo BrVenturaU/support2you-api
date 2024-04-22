@@ -1,14 +1,16 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 from startup import (
     DependencyContainer,
     configure_services,
-    add_configuration_providers,
-    configure_pipeline
+    add_configuration_providers
 )
 from data import ensure_db_exists
+from features.tickets import tickets_controller
+from features.messages import messages_controller
 
 
 def create_app() -> FastAPI:
@@ -22,6 +24,21 @@ def create_app() -> FastAPI:
     app = FastAPI()
 
     app.container = container
+    return app
+
+def configure_pipeline(app: FastAPI) -> FastAPI:
+    # Middlewares
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Routes
+    app.include_router(tickets_controller)
+    app.include_router(messages_controller.router)
+
     return app
 
 app = create_app()
