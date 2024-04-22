@@ -6,7 +6,8 @@ from data.database import Database
 class DependencyContainer(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(
         packages=[
-            "features.tickets"
+            "features.tickets",
+            "features.messages"
         ]
     )
     configuration = providers.Configuration()
