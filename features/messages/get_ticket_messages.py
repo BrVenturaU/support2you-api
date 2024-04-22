@@ -6,7 +6,7 @@ from dependency_injector.wiring import inject, Provide
 
 from data.database import Database
 from models.ticket_model import Ticket
-from models.message_model import Message, MessageRole
+from models.message_model import MessageRole
 from startup import DependencyContainer
 from schema.base import ApiResponse
 
