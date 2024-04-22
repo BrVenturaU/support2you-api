@@ -6,11 +6,11 @@ from data.database import Base
 
 
 class TicketStatus(enum.Enum):
-    NUEVO = 1
-    ABIERTO = 2
-    PENDIENTE = 3
-    ESPERA = 4
-    RESUELTO = 5
+    NUEVO = "NUEVO"
+    ABIERTO = "ABIERTO"
+    PENDIENTE = "PENDIENTE"
+    ESPERA = "ESPERA"
+    RESUELTO = "RESUELTO"
 
 class Ticket(Base):
     __tablename__ = "Tickets"
