@@ -16,4 +16,4 @@ class Ticket(Base):
     __tablename__ = "Tickets"
 
     Id: Mapped[int] = mapped_column(primary_key=True)
-    Status: Mapped[TicketStatus] = mapped_column(Enum(TicketStatus))
+    Status: Mapped[TicketStatus] = mapped_column(Enum(TicketStatus), default=TicketStatus.NUEVO)
