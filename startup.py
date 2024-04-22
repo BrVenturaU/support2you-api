@@ -4,7 +4,11 @@ from dependency_injector import containers, providers
 from data.database import Database
 
 class DependencyContainer(containers.DeclarativeContainer):
-    wiring_config = containers.WiringConfiguration(modules=[])
+    wiring_config = containers.WiringConfiguration(
+        packages=[
+            "features.tickets"
+        ]
+    )
     configuration = providers.Configuration()
 
     # Services
