@@ -27,4 +27,5 @@ class Database:
             session.rollback()
             raise
         finally:
+            print("Closed connection")
             session.close()

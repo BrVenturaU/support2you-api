@@ -1,0 +1,4 @@
+openai_api:
+  system: Eres un profesional del soporte técnico en computadoras, responderás como un técnico en computadoras.
+  model: gpt-3.5-turbo
+  temperature:  0.2

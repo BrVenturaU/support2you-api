@@ -37,7 +37,7 @@ def configure_pipeline(app: FastAPI) -> FastAPI:
 
     # Routes
     app.include_router(tickets_controller)
-    app.include_router(messages_controller.router)
+    app.include_router(messages_controller)
 
     return app
 
