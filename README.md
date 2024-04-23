@@ -21,4 +21,8 @@ Este proyecto contiene el API de Support2You que provee acceso a través de llam
 Próximamente...
 
 ## Docker
-Próximamente...
+Para ejecutar Support2YouAPI como contenedor existen las siguientes opciones:
+- Obtener la imagen del API con cualquiera de las siguientes opciones:
+    - Realizar el build de la imagen en local: `docker build -t brventura/support2you-api:1.0.0 .`
+    - Descargar la imagen desde DockerHub: `docker pull brventura/support2you-api:1.0.0`
+- Ejecutar el contenedor: `docker run --rm -d --name support2you-api --env-file ./.env  -p 8080:8080 brventura/support2you-api:1.0.0` o `docker run -d --name support2you-api --env-file ./.env  -p 8080:8080 brventura/support2you-api:1.0.0` en caso que se quiera preservar el contenedor despues de detenido.
