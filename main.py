@@ -3,11 +3,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from startup import (
-    DependencyContainer,
-    configure_services,
-    add_configuration_providers
-)
+from startup import DependencyContainer, configure_services, add_configuration_providers
 from data import ensure_db_exists
 from features.tickets import tickets_controller
 from features.messages import messages_controller
@@ -21,10 +17,15 @@ def create_app() -> FastAPI:
     add_configuration_providers(container)
     configure_services(container)
 
-    app = FastAPI()
+    app = FastAPI(
+        title="Support2You",
+        summary="Support2You API proxy entre el cliente y OpenAI API.",
+        description="Responde a dudas/problemáticas de soporte técnico en computadoras.",
+    )
 
     app.container = container
     return app
+
 
 def configure_pipeline(app: FastAPI) -> FastAPI:
     # Middlewares
@@ -41,13 +42,15 @@ def configure_pipeline(app: FastAPI) -> FastAPI:
 
     return app
 
+
 app = create_app()
 
 configure_pipeline(app)
 
+
 @app.middleware("http")
 async def redirect(request: Request, next):
-    if(request.url.path == "/"):
+    if request.url.path == "/":
         return RedirectResponse("/docs")
-    
+
     return await next(request)
