@@ -3,6 +3,7 @@
 Este proyecto contiene el API de Support2You que provee acceso a través de llamadas HTTP a la API de OpenAI para la solución de problemas técnicos que los clientes de la empresa hipotética de atención al cliente tienen.
 
 ## Tecnologías
+
 - Python 3.9.
 - FastAPI.
 - Dependency Injector.
@@ -18,11 +19,14 @@ Este proyecto contiene el API de Support2You que provee acceso a través de llam
 - Ejecutar proyecto: Ejecutar la aplicación con `uvicorn main:app` o `uvicorn main:app --reload` para la recarga activa de cambios.
 
 ## Estructura
+
 Próximamente...
 
 ## Docker
+
 Para ejecutar Support2YouAPI como contenedor existen las siguientes opciones:
+
 - Obtener la imagen del API con cualquiera de las siguientes opciones:
-    - Realizar el build de la imagen en local: `docker build -t brventura/support2you-api:1.0.0 .`
-    - Descargar la imagen desde DockerHub: `docker pull brventura/support2you-api:1.0.0`
-- Ejecutar el contenedor: `docker run --rm -d --name support2you-api --env-file ./.env  -p 8080:8080 brventura/support2you-api:1.0.0` o `docker run -d --name support2you-api --env-file ./.env  -p 8080:8080 brventura/support2you-api:1.0.0` en caso que se quiera preservar el contenedor despues de detenido.
+  - Realizar el build de la imagen en local: `docker build -t brventura/support2you-api:tagname .`
+  - Descargar la imagen desde DockerHub: `docker pull brventura/support2you-api:tagname`, ver última versión en [Support2You API repository](https://hub.docker.com/repository/docker/brventura/support2you-api/tags)
+- Ejecutar el contenedor: `docker run --rm -d --name support2you-api --env-file ./.env  -p 8080:8080 brventura/support2you-api:tagname` o `docker run -d --name support2you-api --env-file ./.env  -p 8080:8080 brventura/support2you-api:tagname` en caso que se quiera preservar el contenedor despues de detenido.
